@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="trek_360" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6cC-vc-s1C">
+                                <rect key="frame" x="10" y="507" width="355" height="130"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huh-D6-Vpy">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="42"/>
+                                        <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <state key="normal" title="Start Locating">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aT-nD-eYe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdv-cH-ghV">
+                                        <rect key="frame" x="0.0" y="44" width="355" height="42"/>
+                                        <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <state key="normal" title="Get Location">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="takeLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eRy-9g-2ll"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAi-Ft-bLs">
+                                        <rect key="frame" x="0.0" y="88" width="355" height="42"/>
+                                        <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                        <state key="normal" title="Stop Locating">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopLocatingPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uYl-24-WUn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is some sample text and I am not sure what will make it wrap or not" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="f81-7z-AR1">
+                                <rect key="frame" x="16" y="256" width="343" height="151"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="QHt-Rf-Hzi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f81-7z-AR1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8RB-tZ-vZg"/>
+                            <constraint firstItem="6cC-vc-s1C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="F11-qQ-egE"/>
+                            <constraint firstItem="f81-7z-AR1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="256" id="FGh-PT-fxE"/>
+                            <constraint firstItem="6cC-vc-s1C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MiR-BG-0vt"/>
+                            <constraint firstItem="6cC-vc-s1C" firstAttribute="top" secondItem="f81-7z-AR1" secondAttribute="bottom" constant="100" id="e8Z-hc-GqN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6cC-vc-s1C" secondAttribute="trailing" constant="10" id="jZ3-MJ-Xu7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6cC-vc-s1C" secondAttribute="bottom" constant="30" id="lIL-tF-qAm"/>
+                            <constraint firstItem="f81-7z-AR1" firstAttribute="centerX" secondItem="6cC-vc-s1C" secondAttribute="centerX" id="lzz-mO-NOq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="getLocationBtn" destination="Hdv-cH-ghV" id="sOW-RH-FO1"/>
+                        <outlet property="locationLbl" destination="f81-7z-AR1" id="M8j-f1-ljF"/>
+                        <outlet property="startLocatingBtn" destination="Huh-D6-Vpy" id="HCq-8m-FAk"/>
+                        <outlet property="stopLocatingBtn" destination="zAi-Ft-bLs" id="1Xb-HA-7sW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

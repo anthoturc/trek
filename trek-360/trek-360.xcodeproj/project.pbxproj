@@ -1,0 +1,351 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F40E2EF724ABE66D0047BEA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E2EF624ABE66D0047BEA2 /* AppDelegate.swift */; };
+		F40E2EF924ABE66D0047BEA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E2EF824ABE66D0047BEA2 /* SceneDelegate.swift */; };
+		F40E2EFB24ABE66D0047BEA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E2EFA24ABE66D0047BEA2 /* ViewController.swift */; };
+		F40E2EFE24ABE66D0047BEA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40E2EFC24ABE66D0047BEA2 /* Main.storyboard */; };
+		F40E2F0024ABE6740047BEA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40E2EFF24ABE6740047BEA2 /* Assets.xcassets */; };
+		F40E2F0324ABE6740047BEA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */; };
+		F40E2F0B24AC16140047BEA2 /* LocationBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */; };
+		F40E2F0D24AD6B950047BEA2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F40E2F0C24AD6B950047BEA2 /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F40E2EF324ABE66D0047BEA2 /* Trek 360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trek 360.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40E2EF624ABE66D0047BEA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F40E2EF824ABE66D0047BEA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F40E2EFA24ABE66D0047BEA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F40E2EFD24ABE66D0047BEA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F40E2EFF24ABE6740047BEA2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F40E2F0224ABE6740047BEA2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F40E2F0424ABE6740047BEA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBrain.swift; sourceTree = "<group>"; };
+		F40E2F0C24AD6B950047BEA2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F40E2EF024ABE66D0047BEA2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F40E2EEA24ABE66D0047BEA2 = {
+			isa = PBXGroup;
+			children = (
+				F40E2EF524ABE66D0047BEA2 /* trek-360 */,
+				F40E2EF424ABE66D0047BEA2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F40E2EF424ABE66D0047BEA2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F40E2EF324ABE66D0047BEA2 /* Trek 360.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F40E2EF524ABE66D0047BEA2 /* trek-360 */ = {
+			isa = PBXGroup;
+			children = (
+				F40E2EF624ABE66D0047BEA2 /* AppDelegate.swift */,
+				F40E2EF824ABE66D0047BEA2 /* SceneDelegate.swift */,
+				F40E2EFA24ABE66D0047BEA2 /* ViewController.swift */,
+				F40E2EFC24ABE66D0047BEA2 /* Main.storyboard */,
+				F40E2EFF24ABE6740047BEA2 /* Assets.xcassets */,
+				F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */,
+				F40E2F0424ABE6740047BEA2 /* Info.plist */,
+				F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */,
+				F40E2F0C24AD6B950047BEA2 /* Settings.bundle */,
+			);
+			path = "trek-360";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F40E2EF224ABE66D0047BEA2 /* trek-360 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F40E2F0724ABE6740047BEA2 /* Build configuration list for PBXNativeTarget "trek-360" */;
+			buildPhases = (
+				F40E2EEF24ABE66D0047BEA2 /* Sources */,
+				F40E2EF024ABE66D0047BEA2 /* Frameworks */,
+				F40E2EF124ABE66D0047BEA2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "trek-360";
+			productName = "trek-360";
+			productReference = F40E2EF324ABE66D0047BEA2 /* Trek 360.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F40E2EEB24ABE66D0047BEA2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Anthony Turcios";
+				TargetAttributes = {
+					F40E2EF224ABE66D0047BEA2 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = F40E2EEE24ABE66D0047BEA2 /* Build configuration list for PBXProject "trek-360" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F40E2EEA24ABE66D0047BEA2;
+			productRefGroup = F40E2EF424ABE66D0047BEA2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F40E2EF224ABE66D0047BEA2 /* trek-360 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F40E2EF124ABE66D0047BEA2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40E2F0D24AD6B950047BEA2 /* Settings.bundle in Resources */,
+				F40E2F0324ABE6740047BEA2 /* LaunchScreen.storyboard in Resources */,
+				F40E2F0024ABE6740047BEA2 /* Assets.xcassets in Resources */,
+				F40E2EFE24ABE66D0047BEA2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F40E2EEF24ABE66D0047BEA2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F40E2EFB24ABE66D0047BEA2 /* ViewController.swift in Sources */,
+				F40E2EF724ABE66D0047BEA2 /* AppDelegate.swift in Sources */,
+				F40E2EF924ABE66D0047BEA2 /* SceneDelegate.swift in Sources */,
+				F40E2F0B24AC16140047BEA2 /* LocationBrain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F40E2EFC24ABE66D0047BEA2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F40E2EFD24ABE66D0047BEA2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F40E2F0224ABE6740047BEA2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F40E2F0524ABE6740047BEA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F40E2F0624ABE6740047BEA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F40E2F0824ABE6740047BEA2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62C59THUML;
+				INFOPLIST_FILE = "trek-360/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anthony-turcios.trek-360";
+				PRODUCT_NAME = "Trek 360";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F40E2F0924ABE6740047BEA2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 62C59THUML;
+				INFOPLIST_FILE = "trek-360/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.anthony-turcios.trek-360";
+				PRODUCT_NAME = "Trek 360";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F40E2EEE24ABE66D0047BEA2 /* Build configuration list for PBXProject "trek-360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40E2F0524ABE6740047BEA2 /* Debug */,
+				F40E2F0624ABE6740047BEA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F40E2F0724ABE6740047BEA2 /* Build configuration list for PBXNativeTarget "trek-360" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F40E2F0824ABE6740047BEA2 /* Debug */,
+				F40E2F0924ABE6740047BEA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F40E2EEB24ABE66D0047BEA2 /* Project object */;
+}
