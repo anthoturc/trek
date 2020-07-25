@@ -5,6 +5,13 @@
 //  Created by Anthony Turcios on 7/24/20.
 //  Copyright © 2020 Anthony Turcios. All rights reserved.
 //
+//  The purpose of the StorageBrain is to store the *current*
+//  trek on the user's phone. The alternative would be to constantly
+//  send put requests to the server after a location update
+//
+//  This approach allows us to submit "chunks" of data to the server
+//  and decreases the usage of the network
+
 
 import Foundation
 import SQLite3
@@ -12,11 +19,9 @@ import SQLite3
 class StorageBrain {
     
     private let tableName: String = "Locations"
-    
     private var db: OpaquePointer?
-    init() {
-        
-    }
+    
+    init() {}
     
     private func createTable() {
         let createCMD: String = """
@@ -79,7 +84,7 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
     }
     
-    func getAllRecords() -> [LocationRecord] {
+    func getRecords() -> [LocationRecord] {
         var locations: [LocationRecord] = []
         
         /* prepare selection query */
@@ -101,5 +106,24 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
         
         return locations
+    }
+    
+    func clear() {
+        
+        /* prepare deletion query */
+        let queryString = "DELETE FROM \(tableName)"
+        var stmt: OpaquePointer?
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db!))
+            print("error creating table: \(err)")
+            return
+        }
+        
+        if sqlite3_step(stmt) != SQLITE_DONE {
+            print("failed to delete rows")
+        }
+        
+        sqlite3_finalize(stmt)
     }
 }

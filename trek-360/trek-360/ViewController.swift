@@ -49,9 +49,7 @@ class ViewController: UIViewController {
         if locServices.tracking() {
             let loc: CLLocationCoordinate2D = locServices.getLocation()
             dbServices.addRecord(latitude: Double(loc.latitude), longitude: Double(loc.longitude))
-            
             newText = locServices.getLocationString()
-            
         }
         updateUI(newLblText: newText)
     }
@@ -68,11 +66,9 @@ class ViewController: UIViewController {
         if locServices.tracking() {
             locServices.stopTracking()
             
-            let locations: [LocationRecord] = dbServices.getAllRecords()
-            for loc in locations {
-                print(loc.description)
-            }
-            
+            // TODO: have the locations be sent to a server/db off the phone
+            // let locations: [LocationRecord] = dbServices.getRecords()
+            dbServices.clear()
             dbServices.stop()
         } else {
             newText = "Your location is not currently being tracked!"
@@ -82,10 +78,8 @@ class ViewController: UIViewController {
     
     func sendAlert(withTitle title: String, withMessage msg: String) {
         let alert: UIAlertController = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
         self.present(alert, animated: true)
     }
     
@@ -105,4 +99,3 @@ class ViewController: UIViewController {
         stopLocatingBtn.isEnabled = false
     }
 }
-
