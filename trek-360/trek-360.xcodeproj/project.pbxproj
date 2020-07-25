@@ -15,6 +15,8 @@
 		F40E2F0324ABE6740047BEA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */; };
 		F40E2F0B24AC16140047BEA2 /* LocationBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */; };
 		F40E2F0D24AD6B950047BEA2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F40E2F0C24AD6B950047BEA2 /* Settings.bundle */; };
+		F48EAD3D24CBE69E00110F82 /* LocationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */; };
+		F4B7875824CB7059005A6A35 /* StorageBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B7875724CB7059005A6A35 /* StorageBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		F40E2F0424ABE6740047BEA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationBrain.swift; sourceTree = "<group>"; };
 		F40E2F0C24AD6B950047BEA2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRecord.swift; sourceTree = "<group>"; };
+		F4B7875724CB7059005A6A35 /* StorageBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */,
 				F40E2F0424ABE6740047BEA2 /* Info.plist */,
 				F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */,
+				F4B7875724CB7059005A6A35 /* StorageBrain.swift */,
+				F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */,
 				F40E2F0C24AD6B950047BEA2 /* Settings.bundle */,
 			);
 			path = "trek-360";
@@ -148,6 +154,8 @@
 				F40E2EFB24ABE66D0047BEA2 /* ViewController.swift in Sources */,
 				F40E2EF724ABE66D0047BEA2 /* AppDelegate.swift in Sources */,
 				F40E2EF924ABE66D0047BEA2 /* SceneDelegate.swift in Sources */,
+				F48EAD3D24CBE69E00110F82 /* LocationRecord.swift in Sources */,
+				F4B7875824CB7059005A6A35 /* StorageBrain.swift in Sources */,
 				F40E2F0B24AC16140047BEA2 /* LocationBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

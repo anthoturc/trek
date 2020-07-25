@@ -32,7 +32,6 @@ class LocationBrain : NSObject, CLLocationManagerDelegate {
     // update the current location of the device
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currLocation = locations.last!.coordinate
-//        print(getLocationString())
     }
     
     internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

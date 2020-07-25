@@ -19,16 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var stopLocatingBtn: UIButton!
     
     var locServices: LocationBrain!
+    var dbServices: StorageBrain!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locServices = LocationBrain()
+        locationLbl.textColor = UIColor.black
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        locServices = LocationBrain()
+        dbServices = StorageBrain()
         super.viewDidAppear(animated)
-        
         if !locServices.allowedToLocate() {
             disableUI()
             sendAlert(
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
             )
             updateUI(newLblText: "Please enable location services to use this app's functionality")
         } else {
+            /* only setup database if we are able to get locations */
             enableUI()
             updateUI(newLblText: "Press 'Start Locating' to display your current location!")
         }
@@ -45,13 +47,18 @@ class ViewController: UIViewController {
     @IBAction func takeLocationPressed(_ sender: UIButton) {
         var newText: String = "To get location press 'Start Locating'."
         if locServices.tracking() {
+            let loc: CLLocationCoordinate2D = locServices.getLocation()
+            dbServices.addRecord(latitude: Double(loc.latitude), longitude: Double(loc.longitude))
+            
             newText = locServices.getLocationString()
+            
         }
         updateUI(newLblText: newText)
     }
     
     @IBAction func startLocationPressed(_ sender: UIButton) {
         locServices.startTracking()
+        dbServices.start()
         updateUI(newLblText: "Press 'Get Location' to find coordinates")
     }
     
@@ -60,6 +67,13 @@ class ViewController: UIViewController {
         var newText: String = "Your location is no longer being tracked!"
         if locServices.tracking() {
             locServices.stopTracking()
+            
+            let locations: [LocationRecord] = dbServices.getAllRecords()
+            for loc in locations {
+                print(loc.description)
+            }
+            
+            dbServices.stop()
         } else {
             newText = "Your location is not currently being tracked!"
         }
@@ -90,6 +104,5 @@ class ViewController: UIViewController {
         getLocationBtn.isEnabled = false
         stopLocatingBtn.isEnabled = false
     }
-    
 }
 
