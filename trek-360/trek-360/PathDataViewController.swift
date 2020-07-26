@@ -26,6 +26,7 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func leavePathDataView(_ sender: Any) {
+        mapView.removeOverlays(mapView.overlays)
         mapView.annotations.forEach{mapView.removeAnnotation($0)}
         mapView.delegate = nil
         self.dismiss(animated: true, completion: nil)
@@ -97,10 +98,14 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay)
             pr.strokeColor = UIColor.blue.withAlphaComponent(0.5)
-            pr.lineWidth = 5
+            pr.lineWidth = 2
             return pr
         }
         return MKOverlayRenderer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        mapView.removeFromSuperview()
     }
 }
 
