@@ -29,6 +29,7 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         mapView.removeOverlays(mapView.overlays)
         mapView.annotations.forEach{mapView.removeAnnotation($0)}
         mapView.delegate = nil
+        mapView.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -102,10 +103,6 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
             return pr
         }
         return MKOverlayRenderer()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        mapView.removeFromSuperview()
     }
 }
 

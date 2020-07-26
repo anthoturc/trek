@@ -73,19 +73,15 @@ class ViewController: UIViewController {
     
 
     @IBAction func stopLocatingPressed(_ sender: UIButton) {
-        let newText: String = "Location not recorded."
+        let newText: String = "Press 'Start Locating'."
         locationTimer?.invalidate()
         if locServices.tracking() {
             locServices.stopTracking()
             
             // TODO: have the locations be sent to a server/db off the phone
-            // let locations: [LocationRecord] = dbServices.getRecords()
-            
-            // print(dbServices.getRecords())
             
             // TODO: determine when the database should be cleared
             // could check if current day has a table and when it was created..
-            // dbServices.clear()
         }
         updateUI(newLblText: newText)
     }
