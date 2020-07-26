@@ -132,12 +132,18 @@ class ViewController: UIViewController {
     private func getDaysData(sender: UITapGestureRecognizer) {
         let dayLabel: UILabel = sender.view as! UILabel
         let currDayName: String = dayLabel.text!
-        let dataForToday: [LocationRecord] = dbServices.getRecords(for: currDayName)
+        let dataForChosenDay: [LocationRecord] = dbServices.getRecords(for: currDayName)
+//        used for testing
+//        let dataForChosenDay: [LocationRecord] = [
+//            LocationRecord(id: 1, latitude: 32.7767, longitude: -96.7978),
+//            LocationRecord(id: 1, latitude: 37.7833, longitude: -122.4167),
+//            LocationRecord(id: 1, latitude: 42.2814, longitude: -83.7483),
+//            LocationRecord(id: 1, latitude: 32.7767, longitude: -96.7978)
+//        ]
         
         let pathDataView: PathDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PathDataView") as! PathDataViewController
         pathDataView.modalPresentationStyle = .fullScreen
-        pathDataView.setLocData(data: dataForToday)
-        
+        pathDataView.setLocData(data: dataForChosenDay)
         present(pathDataView, animated: true, completion: nil)
     }
     
