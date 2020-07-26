@@ -17,6 +17,7 @@
 		F40E2F0D24AD6B950047BEA2 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F40E2F0C24AD6B950047BEA2 /* Settings.bundle */; };
 		F48EAD3D24CBE69E00110F82 /* LocationRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */; };
 		F4B7875824CB7059005A6A35 /* StorageBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B7875724CB7059005A6A35 /* StorageBrain.swift */; };
+		F4C43C4E24CD3BD300C8F4ED /* PathDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C43C4D24CD3BD300C8F4ED /* PathDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F40E2F0C24AD6B950047BEA2 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRecord.swift; sourceTree = "<group>"; };
 		F4B7875724CB7059005A6A35 /* StorageBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageBrain.swift; sourceTree = "<group>"; };
+		F4C43C4D24CD3BD300C8F4ED /* PathDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */,
 				F4B7875724CB7059005A6A35 /* StorageBrain.swift */,
 				F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */,
+				F4C43C4D24CD3BD300C8F4ED /* PathDataViewController.swift */,
 				F40E2F0C24AD6B950047BEA2 /* Settings.bundle */,
 			);
 			path = "trek-360";
@@ -153,6 +156,7 @@
 			files = (
 				F40E2EFB24ABE66D0047BEA2 /* ViewController.swift in Sources */,
 				F40E2EF724ABE66D0047BEA2 /* AppDelegate.swift in Sources */,
+				F4C43C4E24CD3BD300C8F4ED /* PathDataViewController.swift in Sources */,
 				F40E2EF924ABE66D0047BEA2 /* SceneDelegate.swift in Sources */,
 				F48EAD3D24CBE69E00110F82 /* LocationRecord.swift in Sources */,
 				F4B7875824CB7059005A6A35 /* StorageBrain.swift in Sources */,

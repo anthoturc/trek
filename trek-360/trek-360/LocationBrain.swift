@@ -12,10 +12,10 @@ import CoreLocation
 
 class LocationBrain : NSObject, CLLocationManagerDelegate {
     
-    var locationManager: CLLocationManager? = nil
-    var currLocation: CLLocationCoordinate2D? = nil
-    var error: String? = nil
-    var isTracking: Bool = false
+    private var locationManager: CLLocationManager? = nil
+    private var currLocation: CLLocationCoordinate2D? = nil
+    private var error: String? = nil
+    private var isTracking: Bool = false
     
     override init() {
         super.init()
@@ -36,7 +36,6 @@ class LocationBrain : NSObject, CLLocationManagerDelegate {
     
     internal func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.error = error.localizedDescription
-        print(self.error!)
     }
     
     func startTracking() {

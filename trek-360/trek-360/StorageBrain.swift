@@ -18,12 +18,25 @@ import SQLite3
 
 class StorageBrain {
     
-    private let tableName: String = "Locations"
     private var db: OpaquePointer?
     
-    init() {}
+    init() {
+        let dbName: String = "locations.db"
+        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) .appendingPathComponent(dbName)
+        
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error openning db")
+            sqlite3_close(db)
+            return
+        }
+        
+        /* ensure all days exist */
+        for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] {
+            createTable(tableName: day)
+        }
+    }
     
-    private func createTable() {
+    private func createTable(tableName: String) {
         let createCMD: String = """
 CREATE TABLE IF NOT EXISTS \(tableName) \
 (id INTEGER PRIMARY KEY AUTOINCREMENT, lat REAL, lon REAL)
@@ -35,25 +48,9 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
     }
     
-    func start() {
-        let dbName: String = "locations.db"
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) .appendingPathComponent(dbName)
-        
-        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("error openning db")
-            sqlite3_close(db)
-            return
-        }
-        
-        createTable()
-    }
-    
-    func stop() {
-        sqlite3_close(db)
-    }
-    
     func addRecord(latitude: Double, longitude: Double) {
-        
+        /* only add a record to the current day */
+        let tableName: String = StorageBrain.getWeekDay()
         /* prepare the insert query */
         let queryString: String = "INSERT INTO \(tableName) (lat, lon) VALUES (?,?)"
         var stmt: OpaquePointer?
@@ -84,11 +81,11 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
     }
     
-    func getRecords() -> [LocationRecord] {
+    func getRecords(for dayName: String) -> [LocationRecord] {
         var locations: [LocationRecord] = []
         
         /* prepare selection query */
-        let queryString = "SELECT * FROM \(tableName)"
+        let queryString = "SELECT * FROM \(dayName)"
         var stmt: OpaquePointer?
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
@@ -108,7 +105,7 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         return locations
     }
     
-    func clear() {
+    func clear(tableName: String) {
         
         /* prepare deletion query */
         let queryString = "DELETE FROM \(tableName)"
@@ -125,5 +122,12 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
         
         sqlite3_finalize(stmt)
+    }
+    
+    private static func getWeekDay() -> String {
+        let weekDayNameFromatter = DateFormatter()
+        weekDayNameFromatter.dateFormat = "EEEE"
+        let weekDayName = weekDayNameFromatter.string(from: Date())
+        return weekDayName
     }
 }
