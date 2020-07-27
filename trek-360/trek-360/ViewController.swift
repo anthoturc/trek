@@ -26,6 +26,8 @@ class ViewController: UIViewController {
     
     private let updateLocTimeInterval: Double = 5
     
+    var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationLbl.textColor = UIColor.black
@@ -33,24 +35,11 @@ class ViewController: UIViewController {
         /* enable the day labels to be clicked */
         initDayLabels()
         initControlUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        
         locServices = LocationBrain()
         dbServices = StorageBrain()
-        super.viewDidAppear(animated)
-        if !locServices.allowedToLocate() {
-            disableUI()
-            sendAlert(
-                withTitle: "Location services are required.",
-                withMessage: "Please enable location services in Settings to run the app."
-            )
-            updateUI(newLblText: "Please enable location services to use this app's functionality")
-        } else {
-            /* only setup database if we are able to get locations */
-            enableUI()
-            updateUI(newLblText: "Press 'Start Locating'.")
-        }
+        
+        updateUI(newLblText: "Press 'Start Locating'.")
     }
     
     @objc
@@ -59,9 +48,30 @@ class ViewController: UIViewController {
             let loc: CLLocationCoordinate2D = locServices.getLocation()
             dbServices.addRecord(latitude: Double(loc.latitude), longitude: Double(loc.longitude))
         }
+        print("getting app state \(counter)")
+        counter += 1
+        let appState = UIApplication.shared.applicationState
+        if appState == .active {
+            print("active")
+        } else if appState == .inactive {
+            print("inactive")
+        } else if appState == .background {
+            print("background")
+        }
     }
     
     @IBAction func startLocationPressed(_ sender: UIButton) {
+        
+        if !locServices.allowedToLocate() {
+            disableUI()
+            sendAlert(
+                withTitle: "Location services are required.",
+                withMessage: "Please enable location services in Settings to run the app."
+            )
+            updateUI(newLblText: "Please enable location services to use this app's functionality")
+            return
+        }
+        
         if !locServices.tracking() {
             locServices.startTracking()
             locationTimer?.invalidate()
@@ -97,14 +107,20 @@ class ViewController: UIViewController {
         let n = daysStackView.subviews.count - 1
         /* the first and last label are not days of the week */
         let daysOfWeek = daysStackView.subviews[1..<n]
+        let currDay = StorageBrain.getWeekDay()
         /* add tap gesture to weekday labels */
         for view in daysOfWeek {
             let lbl: UILabel = view as! UILabel
+            if lbl.text! == currDay {
+                lbl.textColor = UIColor.blue
+            }
             lbl.isUserInteractionEnabled = true
             lbl.addGestureRecognizer(setGesture())
         }
     }
     
+    // TODO: this function name doesn't really
+    // make sense anymore (update it)
     private func updateUI(newLblText: String) {
         locationLbl.text = newLblText
     }
@@ -129,13 +145,6 @@ class ViewController: UIViewController {
         let dayLabel: UILabel = sender.view as! UILabel
         let currDayName: String = dayLabel.text!
         let dataForChosenDay: [LocationRecord] = dbServices.getRecords(for: currDayName)
-//        used for testing
-//        let dataForChosenDay: [LocationRecord] = [
-//            LocationRecord(id: 1, latitude: 32.7767, longitude: -96.7978),
-//            LocationRecord(id: 1, latitude: 37.7833, longitude: -122.4167),
-//            LocationRecord(id: 1, latitude: 42.2814, longitude: -83.7483),
-//            LocationRecord(id: 1, latitude: 32.7767, longitude: -96.7978)
-//        ]
         
         let pathDataView: PathDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PathDataView") as! PathDataViewController
         pathDataView.modalPresentationStyle = .fullScreen

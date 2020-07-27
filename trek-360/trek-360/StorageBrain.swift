@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         sqlite3_finalize(stmt)
     }
     
-    private static func getWeekDay() -> String {
+    static func getWeekDay() -> String {
         let weekDayNameFromatter = DateFormatter()
         weekDayNameFromatter.dateFormat = "EEEE"
         let weekDayName = weekDayNameFromatter.string(from: Date())
