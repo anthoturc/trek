@@ -24,6 +24,7 @@ class LocationBrain : NSObject, CLLocationManagerDelegate {
     
     private func setupLocationManager() {
         locationManager = CLLocationManager()
+        locationManager?.allowsBackgroundLocationUpdates = true
         locationManager?.requestAlwaysAuthorization()
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.delegate = self

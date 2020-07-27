@@ -12,34 +12,25 @@ import CoreLocation
 
 class ViewController: UIViewController {
 
-    
     @IBOutlet weak var daysStackView: UIStackView!
     @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var locationTrackingBtn: UIButton!
     
-    @IBOutlet weak var startLocatingBtn: UIButton!
-    @IBOutlet weak var stopLocatingBtn: UIButton!
-    
-    var locServices: LocationBrain!
-    var dbServices: StorageBrain!
-    
-    var locationTimer: Timer?
-    
+    private var locServices: LocationBrain!
+    private var dbServices: StorageBrain!
+    private var locationTimer: Timer?
     private let updateLocTimeInterval: Double = 5
-    
-    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         locationLbl.textColor = UIColor.black
-        
         /* enable the day labels to be clicked */
         initDayLabels()
         initControlUI()
-        
+        /* there should only be one instance of these two services */
         locServices = LocationBrain()
         dbServices = StorageBrain()
-        
-        updateUI(newLblText: "Press 'Start Locating'.")
+        updateLog(newLblText: "Press 'Start Locating'.")
     }
     
     @objc
@@ -48,52 +39,31 @@ class ViewController: UIViewController {
             let loc: CLLocationCoordinate2D = locServices.getLocation()
             dbServices.addRecord(latitude: Double(loc.latitude), longitude: Double(loc.longitude))
         }
-        print("getting app state \(counter)")
-        counter += 1
-        let appState = UIApplication.shared.applicationState
-        if appState == .active {
-            print("active")
-        } else if appState == .inactive {
-            print("inactive")
-        } else if appState == .background {
-            print("background")
-        }
     }
     
-    @IBAction func startLocationPressed(_ sender: UIButton) {
-        
+    @IBAction func locationTrackingBtnPressed(_ sender: Any) {
         if !locServices.allowedToLocate() {
-            disableUI()
             sendAlert(
                 withTitle: "Location services are required.",
                 withMessage: "Please enable location services in Settings to run the app."
             )
-            updateUI(newLblText: "Please enable location services to use this app's functionality")
             return
         }
         
-        if !locServices.tracking() {
-            locServices.startTracking()
-            locationTimer?.invalidate()
-            locationTimer = Timer.scheduledTimer(timeInterval: updateLocTimeInterval, target: self, selector: #selector(recordCurrentLocation), userInfo: nil, repeats: true)
-        }
-        
-        updateUI(newLblText: "Recording location.")
-    }
-    
-
-    @IBAction func stopLocatingPressed(_ sender: UIButton) {
-        let newText: String = "Press 'Start Locating'."
         locationTimer?.invalidate()
-        if locServices.tracking() {
+        if !locServices.tracking() { /* not currently tracking */
+            locationTrackingBtn.setTitle("Stop Locating", for: .normal)
+            locServices.startTracking()
+            locationTimer = Timer.scheduledTimer(timeInterval: updateLocTimeInterval, target: self, selector: #selector(recordCurrentLocation), userInfo: nil, repeats: true)
+            updateLog(newLblText: "Recording location.")
+        } else { /* currently tracking */
+            locationTrackingBtn.setTitle("Start Locating", for: .normal)
             locServices.stopTracking()
-            
             // TODO: have the locations be sent to a server/db off the phone
-            
             // TODO: determine when the database should be cleared
             // could check if current day has a table and when it was created..
+            updateLog(newLblText: "Press 'Start Locating'.")
         }
-        updateUI(newLblText: newText)
     }
     
     private func sendAlert(withTitle title: String, withMessage msg: String) {
@@ -113,26 +83,18 @@ class ViewController: UIViewController {
             let lbl: UILabel = view as! UILabel
             if lbl.text! == currDay {
                 lbl.textColor = UIColor.blue
+                lbl.textAlignment = .center
+            } else {
+                lbl.textAlignment = .left
             }
+            
             lbl.isUserInteractionEnabled = true
             lbl.addGestureRecognizer(setGesture())
         }
     }
     
-    // TODO: this function name doesn't really
-    // make sense anymore (update it)
-    private func updateUI(newLblText: String) {
+    private func updateLog(newLblText: String) {
         locationLbl.text = newLblText
-    }
-    
-    private func enableUI() {
-        startLocatingBtn.isEnabled = true
-        stopLocatingBtn.isEnabled = true
-    }
-    
-    private func disableUI() {
-        startLocatingBtn.isEnabled = false
-        stopLocatingBtn.isEnabled = false
     }
     
     private func setGesture() -> UITapGestureRecognizer {
@@ -143,18 +105,19 @@ class ViewController: UIViewController {
     @objc
     private func getDaysData(sender: UITapGestureRecognizer) {
         let dayLabel: UILabel = sender.view as! UILabel
+        
         let currDayName: String = dayLabel.text!
         let dataForChosenDay: [LocationRecord] = dbServices.getRecords(for: currDayName)
-        
         let pathDataView: PathDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PathDataView") as! PathDataViewController
-        pathDataView.modalPresentationStyle = .fullScreen
+        
+        pathDataView.modalPresentationStyle = .popover
         pathDataView.setLocData(data: dataForChosenDay)
+        pathDataView.setCurrDay(to: currDayName)
         present(pathDataView, animated: true, completion: nil)
     }
     
     private func initControlUI() {
         let radiusVal: CGFloat = 24.0
-        startLocatingBtn.layer.cornerRadius = radiusVal
-        stopLocatingBtn.layer.cornerRadius = radiusVal
+        locationTrackingBtn.layer.cornerRadius = radiusVal
     }
 }

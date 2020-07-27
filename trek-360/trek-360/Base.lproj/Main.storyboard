@@ -19,58 +19,58 @@
                                 <rect key="frame" x="10" y="0.0" width="355" height="657"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="dLU-Hu-Dua" userLabel="Days">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="484"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="557.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g5-S2-LSL" userLabel="This Week">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="51"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="59.5"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml9-YJ-z7t" userLabel="Monday">
-                                                <rect key="frame" x="0.0" y="54" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml9-YJ-z7t" userLabel="Monday">
+                                                <rect key="frame" x="0.0" y="62.5" width="355" height="59"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-Lv-buL" userLabel="Tuesday">
-                                                <rect key="frame" x="0.0" y="108" width="355" height="51.5"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GF-Lv-buL" userLabel="Tuesday">
+                                                <rect key="frame" x="0.0" y="124.5" width="355" height="59.5"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-iv-e56" userLabel="Wednesday">
-                                                <rect key="frame" x="0.0" y="162.5" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wednesday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyy-iv-e56" userLabel="Wednesday">
+                                                <rect key="frame" x="0.0" y="187" width="355" height="59"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-rJ-tI6" userLabel="Thursday">
-                                                <rect key="frame" x="0.0" y="216.5" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thursday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-rJ-tI6" userLabel="Thursday">
+                                                <rect key="frame" x="0.0" y="249" width="355" height="59.5"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kO4-6Y-Jkc" userLabel="Friday">
-                                                <rect key="frame" x="0.0" y="270.5" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kO4-6Y-Jkc" userLabel="Friday">
+                                                <rect key="frame" x="0.0" y="311.5" width="355" height="59"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCv-d3-oEu" userLabel="Saturday">
-                                                <rect key="frame" x="0.0" y="324.5" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCv-d3-oEu" userLabel="Saturday">
+                                                <rect key="frame" x="0.0" y="373.5" width="355" height="59.5"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6C-hD-Lfh" userLabel="Sunday">
-                                                <rect key="frame" x="0.0" y="378.5" width="355" height="51"/>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6C-hD-Lfh" userLabel="Sunday">
+                                                <rect key="frame" x="0.0" y="436" width="355" height="59"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="f81-7z-AR1" userLabel="Log">
-                                                <rect key="frame" x="0.0" y="432.5" width="355" height="51.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Locating" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="f81-7z-AR1" userLabel="Log">
+                                                <rect key="frame" x="0.0" y="498" width="355" height="59.5"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -82,28 +82,17 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6cC-vc-s1C" userLabel="Controls">
-                                        <rect key="frame" x="0.0" y="494" width="355" height="163"/>
+                                        <rect key="frame" x="0.0" y="567.5" width="355" height="89.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Huh-D6-Vpy">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="76.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="89.5"/>
                                                 <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
                                                 <state key="normal" title="Start Locating">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="startLocationPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4aT-nD-eYe"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAi-Ft-bLs">
-                                                <rect key="frame" x="0.0" y="86.5" width="355" height="76.5"/>
-                                                <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
-                                                <state key="normal" title="Stop Locating">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="stopLocatingPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uYl-24-WUn"/>
+                                                    <action selector="locationTrackingBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z6Z-oi-mb1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -123,8 +112,7 @@
                     <connections>
                         <outlet property="daysStackView" destination="dLU-Hu-Dua" id="G2O-aH-LKl"/>
                         <outlet property="locationLbl" destination="f81-7z-AR1" id="U9z-L5-ciU"/>
-                        <outlet property="startLocatingBtn" destination="Huh-D6-Vpy" id="HCq-8m-FAk"/>
-                        <outlet property="stopLocatingBtn" destination="zAi-Ft-bLs" id="1Xb-HA-7sW"/>
+                        <outlet property="locationTrackingBtn" destination="Huh-D6-Vpy" id="Fx2-E7-hC5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -140,37 +128,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hbd-SB-Iv9">
-                                <rect key="frame" x="5" y="5" width="365" height="537.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hbd-SB-Iv9" secondAttribute="height" multiplier="125:184" id="3W2-Ph-8RZ"/>
-                                </constraints>
+                                <rect key="frame" x="5" y="54" width="365" height="608"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsM-rb-Peh">
-                                <rect key="frame" x="10" y="570" width="355" height="76.5"/>
-                                <color key="backgroundColor" red="0.0053421221670000001" green="1" blue="0.98868197199999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data For Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uv-tg-ohK">
+                                <rect key="frame" x="10" y="20" width="355" height="29"/>
                                 <fontDescription key="fontDescription" name="AppleColorEmoji" family="Apple Color Emoji" pointSize="20"/>
-                                <state key="normal" title="Go Back">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="leavePathDataView:" destination="j2F-Rb-LwK" eventType="touchUpInside" id="5US-0c-Gh2"/>
-                                </connections>
-                            </button>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="gsM-rb-Peh" firstAttribute="top" secondItem="hbd-SB-Iv9" secondAttribute="bottom" constant="27.5" id="3aH-KJ-hjj"/>
-                            <constraint firstItem="D1W-gV-3TN" firstAttribute="trailing" secondItem="hbd-SB-Iv9" secondAttribute="trailing" constant="5" id="7ZX-L7-dGJ"/>
-                            <constraint firstItem="D1W-gV-3TN" firstAttribute="bottom" secondItem="gsM-rb-Peh" secondAttribute="bottom" constant="20.5" id="GT9-cN-woc"/>
-                            <constraint firstItem="D1W-gV-3TN" firstAttribute="trailing" secondItem="gsM-rb-Peh" secondAttribute="trailing" constant="10" id="HwM-9w-SOz"/>
-                            <constraint firstItem="gsM-rb-Peh" firstAttribute="leading" secondItem="D1W-gV-3TN" secondAttribute="leading" constant="10" id="QVp-fP-UOG"/>
-                            <constraint firstItem="hbd-SB-Iv9" firstAttribute="leading" secondItem="D1W-gV-3TN" secondAttribute="leading" constant="5" id="TyW-Cb-3Mp"/>
-                            <constraint firstItem="hbd-SB-Iv9" firstAttribute="top" secondItem="D1W-gV-3TN" secondAttribute="top" constant="5" id="a2b-xt-d5F"/>
+                            <constraint firstItem="hbd-SB-Iv9" firstAttribute="leading" secondItem="D1W-gV-3TN" secondAttribute="leading" constant="5" id="CEX-kW-lNr"/>
+                            <constraint firstItem="D1W-gV-3TN" firstAttribute="bottom" secondItem="hbd-SB-Iv9" secondAttribute="bottom" constant="5" id="YD0-M6-6sx"/>
+                            <constraint firstItem="0uv-tg-ohK" firstAttribute="leading" secondItem="D1W-gV-3TN" secondAttribute="leading" constant="10" id="dB6-6S-GtY"/>
+                            <constraint firstItem="D1W-gV-3TN" firstAttribute="trailing" secondItem="hbd-SB-Iv9" secondAttribute="trailing" constant="5" id="eZi-w8-RMQ"/>
+                            <constraint firstItem="hbd-SB-Iv9" firstAttribute="top" secondItem="0uv-tg-ohK" secondAttribute="bottom" constant="5" id="vTu-7k-NsP"/>
+                            <constraint firstItem="D1W-gV-3TN" firstAttribute="trailing" secondItem="0uv-tg-ohK" secondAttribute="trailing" constant="10" id="x6T-ra-hIG"/>
+                            <constraint firstItem="0uv-tg-ohK" firstAttribute="top" secondItem="D1W-gV-3TN" secondAttribute="top" constant="20" id="z3C-G1-aWT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D1W-gV-3TN"/>
                     </view>
                     <connections>
-                        <outlet property="goBackBtn" destination="gsM-rb-Peh" id="y9M-zf-4g7"/>
+                        <outlet property="currDayLbl" destination="0uv-tg-ohK" id="LLP-ih-gwI"/>
                         <outlet property="mapView" destination="hbd-SB-Iv9" id="dTY-zd-2Xc"/>
                     </connections>
                 </viewController>

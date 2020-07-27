@@ -13,7 +13,7 @@ import MapKit
 class PathDataViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var goBackBtn: UIButton!
+    @IBOutlet weak var currDayLbl: UILabel!
     
     private var locData: [LocationRecord] = []
     private var currDay: String = ""
@@ -25,32 +25,27 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         updateUI()
     }
     
-    @IBAction func leavePathDataView(_ sender: Any) {
-        mapView.removeOverlays(mapView.overlays)
-        mapView.annotations.forEach{mapView.removeAnnotation($0)}
-        mapView.delegate = nil
-        mapView.removeFromSuperview()
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func setLocData(data: [LocationRecord]) {
         locData = data
     }
     
-    func setCurrDay(day: String) {
+    func setCurrDay(to day: String) {
         currDay = day
     }
     
     private func updateUI() {
         mapView.layer.borderWidth = 2
         mapView.layer.borderColor = UIColor.black.cgColor
-        let radiusVal: CGFloat = 24.0
-        goBackBtn.layer.cornerRadius = radiusVal
+        
+        if currDay == StorageBrain.getWeekDay() {
+            currDayLbl.textColor = UIColor.blue
+        }
+        currDayLbl.text = currDay
     }
     
     private func updateMap() {
         
-        if locData.isEmpty {
+        if locData.count < 2 { /* require at least two points for line */
             let initialLocation = CLLocation(latitude: 44.0081, longitude: -73.1760)
             mapView.centerToLocation(initialLocation)
             return

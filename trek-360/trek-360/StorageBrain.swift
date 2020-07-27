@@ -15,12 +15,19 @@
 
 import Foundation
 import SQLite3
+import MapKit
 
 class StorageBrain {
     
     private var db: OpaquePointer?
+    private var currLat: Double
+    private var currLon: Double
     
     init() {
+        /* default loc is midd */
+        currLat = 44.0081
+        currLon = -73.1760
+        
         let dbName: String = "locations.db"
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) .appendingPathComponent(dbName)
         
@@ -49,6 +56,13 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
     }
     
     func addRecord(latitude: Double, longitude: Double) {
+        /* do not add location if it is the same as the previous (6 digits of precision) */
+        if Double.equal(currLat, latitude, precise: 6) && Double.equal(currLon, longitude, precise: 6) {
+            return
+        }
+        currLat = latitude
+        currLon = longitude
+        
         /* only add a record to the current day */
         let tableName: String = StorageBrain.getWeekDay()
         /* prepare the insert query */
@@ -129,5 +143,21 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         weekDayNameFromatter.dateFormat = "EEEE"
         let weekDayName = weekDayNameFromatter.string(from: Date())
         return weekDayName
+    }
+}
+
+
+extension Double {
+    func precised(_ value: Int = 1) -> Double {
+        let offset = pow(10, Double(value))
+        return (self * offset).rounded() / offset
+    }
+
+    static func equal(_ lhs: Double, _ rhs: Double, precise value: Int? = nil) -> Bool {
+        guard let value = value else {
+            return lhs == rhs
+        }
+
+        return lhs.precised(value) == rhs.precised(value)
     }
 }
