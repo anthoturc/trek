@@ -73,15 +73,12 @@
 				F4C769D124CE8C9C0029039C /* Tests */,
 				F40E2EF624ABE66D0047BEA2 /* AppDelegate.swift */,
 				F40E2EF824ABE66D0047BEA2 /* SceneDelegate.swift */,
-				F40E2EFA24ABE66D0047BEA2 /* ViewController.swift */,
+				F4C769DB24CFBBD20029039C /* Controller */,
 				F40E2EFC24ABE66D0047BEA2 /* Main.storyboard */,
 				F40E2EFF24ABE6740047BEA2 /* Assets.xcassets */,
 				F40E2F0124ABE6740047BEA2 /* LaunchScreen.storyboard */,
 				F40E2F0424ABE6740047BEA2 /* Info.plist */,
-				F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */,
-				F4B7875724CB7059005A6A35 /* StorageBrain.swift */,
-				F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */,
-				F4C43C4D24CD3BD300C8F4ED /* PathDataViewController.swift */,
+				F4C769DA24CFBBC50029039C /* Model */,
 				F40E2F0C24AD6B950047BEA2 /* Settings.bundle */,
 			);
 			path = "trek-360";
@@ -94,6 +91,25 @@
 				F4C769D424CE8CEC0029039C /* BigTestData.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		F4C769DA24CFBBC50029039C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F40E2F0A24AC16140047BEA2 /* LocationBrain.swift */,
+				F4B7875724CB7059005A6A35 /* StorageBrain.swift */,
+				F48EAD3C24CBE69E00110F82 /* LocationRecord.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F4C769DB24CFBBD20029039C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F40E2EFA24ABE66D0047BEA2 /* ViewController.swift */,
+				F4C43C4D24CD3BD300C8F4ED /* PathDataViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

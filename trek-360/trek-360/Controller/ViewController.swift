@@ -59,6 +59,12 @@ class ViewController: UIViewController {
         } else { /* currently tracking */
             locationTrackingBtn.setTitle("Start Locating", for: .normal)
             locServices.stopTracking()
+            /* the next time the user decides to start a path
+             the dbService will need to have a different path number associated with
+             that path.
+             
+             this is done to allow drawing of separate paths */
+            dbServices.incrementPathNum()
             // TODO: have the locations be sent to a server/db off the phone
             // TODO: determine when the database should be cleared
             // could check if current day has a table and when it was created..
@@ -107,7 +113,7 @@ class ViewController: UIViewController {
         let dayLabel: UILabel = sender.view as! UILabel
         
         let currDayName: String = dayLabel.text!
-        let dataForChosenDay: [LocationRecord] = dbServices.getRecords(for: currDayName)
+        let dataForChosenDay: [[CLLocationCoordinate2D]] = dbServices.getRecords(for: currDayName)
         let pathDataView: PathDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PathDataView") as! PathDataViewController
         
         pathDataView.modalPresentationStyle = .popover

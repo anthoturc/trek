@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import MapKit
 
 struct LocationRecord {
-    var id: Int32
-    var latitude: Double
-    var longitude: Double
     
-    var description: String { return "\(id) - \(latitude), \(longitude)" }
+    var id: Int32
+    var pathNum: Int32
+    var loc: CLLocationCoordinate2D
+    
+    var description: String { return "\(id) - \(loc.latitude), \(loc.longitude)" }
 }

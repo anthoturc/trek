@@ -22,11 +22,13 @@ class StorageBrain {
     private var db: OpaquePointer?
     private var currLat: Double
     private var currLon: Double
+    private var currPathNum: Int32
     
     init() {
         /* default loc is midd */
         currLat = 44.0081
         currLon = -73.1760
+        currPathNum = 0
         
         let dbName: String = "locations.db"
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) .appendingPathComponent(dbName)
@@ -43,10 +45,14 @@ class StorageBrain {
         }
     }
     
+    func incrementPathNum() {
+        currPathNum += 1
+    }
+    
     private func createTable(tableName: String) {
         let createCMD: String = """
 CREATE TABLE IF NOT EXISTS \(tableName) \
-(id INTEGER PRIMARY KEY AUTOINCREMENT, lat REAL, lon REAL)
+(id INTEGER PRIMARY KEY AUTOINCREMENT, lat REAL, lon REAL, pathNum INTEGER)
 """
         
         if sqlite3_exec(db, createCMD, nil, nil, nil) != SQLITE_OK {
@@ -66,37 +72,43 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         /* only add a record to the current day */
         let tableName: String = StorageBrain.getWeekDay()
         /* prepare the insert query */
-        let queryString: String = "INSERT INTO \(tableName) (lat, lon) VALUES (?,?)"
+        let queryString: String = "INSERT INTO \(tableName) (lat, lon, pathNUM) VALUES (?,?,?)"
         var stmt: OpaquePointer?
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
+            print("error preparing 'INSERT INTO \(tableName) (lat, lon, pathNum) VALUES (?,?,?)': \(err)")
             return
         }
         
         /* bind the parameters */
         if sqlite3_bind_double(stmt, 1, latitude) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
+            print("error binding latitude: \(err)")
             return
         }
         
         if sqlite3_bind_double(stmt, 2, longitude) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
+            print("error setting longitude: \(err)")
+            return
+        }
+        
+        if sqlite3_bind_int(stmt, 3, currPathNum) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db!))
+            print("error binding path number: \(err)")
             return
         }
         
         /* execute query */
         if sqlite3_step(stmt) != SQLITE_DONE {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
+            print("error executing statement: \(err)")
             return
         }
     }
     
-    func getRecords(for dayName: String) -> [LocationRecord] {
-        var locations: [LocationRecord] = []
+    func getRecords(for dayName: String) -> [[CLLocationCoordinate2D]] {
+        var paths: [[CLLocationCoordinate2D]] = []
         
         /* prepare selection query */
         let queryString = "SELECT * FROM \(dayName)"
@@ -104,19 +116,32 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
-            return locations
+            print("error preparing 'SELECT * FROM \(dayName)' string: \(err)")
+            return paths
         }
         
+        var pathNum: Int32 = 0
+        var currPath: [CLLocationCoordinate2D] = []
         while (sqlite3_step(stmt) == SQLITE_ROW) {
-            let id = sqlite3_column_int(stmt, 0)
             let lat = sqlite3_column_double(stmt, 1)
             let long = sqlite3_column_double(stmt, 2)
+            let currRecordPathNum = sqlite3_column_int(stmt, 3)
             
-            locations.append(LocationRecord(id: id, latitude: lat, longitude: long))
+            if currRecordPathNum != pathNum {
+                if currPath.count > 1 { /* only add paths that have more than one point */
+                    paths.append(currPath)
+                }
+                pathNum = currRecordPathNum
+                currPath = []
+            } else {
+                currPath.append(CLLocationCoordinate2D(latitude: lat, longitude: long))
+            }
+        }
+        if currPath.count > 1 { // last path needs to be added if valid path
+            paths.append(currPath)
         }
         
-        return locations
+        return paths
     }
     
     func clear(tableName: String) {
@@ -127,7 +152,7 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
-            print("error creating table: \(err)")
+            print("error preparing 'DELETE FROM \(tableName)': \(err)")
             return
         }
         

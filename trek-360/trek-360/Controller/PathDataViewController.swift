@@ -15,7 +15,7 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var currDayLbl: UILabel!
     
-    private var locData: [LocationRecord] = []
+    private var paths: [[CLLocationCoordinate2D]] = []
     private var currDay: String = ""
     
     override func viewDidLoad() {
@@ -25,8 +25,8 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         updateUI()
     }
     
-    func setLocData(data: [LocationRecord]) {
-        locData = data
+    func setLocData(data: [[CLLocationCoordinate2D]]) {
+        paths = data
     }
     
     func setCurrDay(to day: String) {
@@ -45,7 +45,7 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     
     private func updateMap() {
         
-        if locData.count < 2 { /* require at least two points for line */
+        if paths.isEmpty { /* require at least two points for line */
             let initialLocation = CLLocation(latitude: 44.0081, longitude: -73.1760)
             mapView.centerToLocation(initialLocation)
             return
@@ -59,30 +59,28 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         var minLon: Double = 100000.0
         var maxLon: Double = -100000.0
         
-        var locations: [CLLocationCoordinate2D] = []
+        var numLocations: Int = 0
         
-        for loc in locData {
-            
-            maxLat = Double.maximum(maxLat, loc.latitude)
-            minLat = Double.minimum(minLat, loc.latitude)
-            
-            maxLon = Double.maximum(maxLon, loc.longitude)
-            minLon = Double.minimum(minLon, loc.longitude)
-            
-            avgLat += loc.latitude
-            avgLon += loc.longitude
-            locations.append(
-                CLLocationCoordinate2D(
-                    latitude: loc.latitude, longitude: loc.longitude
-                )
-            )
+        for path in paths { // convert all location records into cllocation coordinates
+            for loc in path {
+                numLocations += 1
+                maxLat = Double.maximum(maxLat, loc.latitude)
+                minLat = Double.minimum(minLat, loc.latitude)
+                
+                maxLon = Double.maximum(maxLon, loc.longitude)
+                minLon = Double.minimum(minLon, loc.longitude)
+                
+                avgLat += loc.latitude
+                avgLon += loc.longitude
+            }
+            let geoDesicPolyLine = MKGeodesicPolyline(coordinates: path, count: path.count)
+            mapView.addOverlay(geoDesicPolyLine)
         }
         
-        avgLat /= Double(locData.count)
-        avgLon /= Double(locData.count)
+        avgLat /= Double(numLocations)
+        avgLon /= Double(numLocations)
         let initialLocation = CLLocation(latitude: avgLat, longitude: avgLon)
-        let geoDesicPolyLine = MKGeodesicPolyline(coordinates: locations, count: locations.count)
-        mapView.addOverlay(geoDesicPolyLine, level: .aboveLabels)
+        
         UIView.animate(withDuration: 1.5, animations: { () -> Void in
             let span = MKCoordinateSpan(latitudeDelta: 	fabs(maxLat - minLat), longitudeDelta: fabs(maxLon - minLon))
             let region = MKCoordinateRegion(center: initialLocation.coordinate, span: span)
