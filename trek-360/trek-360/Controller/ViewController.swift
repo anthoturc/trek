@@ -113,7 +113,7 @@ class ViewController: UIViewController {
         let dayLabel: UILabel = sender.view as! UILabel
         
         let currDayName: String = dayLabel.text!
-        let dataForChosenDay: [[CLLocationCoordinate2D]] = dbServices.getRecords(for: currDayName)
+        let dataForChosenDay: PathsData = dbServices.getRecords(for: currDayName)
         let pathDataView: PathDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "PathDataView") as! PathDataViewController
         
         pathDataView.modalPresentationStyle = .popover

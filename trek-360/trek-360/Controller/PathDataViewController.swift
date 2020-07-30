@@ -15,7 +15,7 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var currDayLbl: UILabel!
     
-    private var paths: [[CLLocationCoordinate2D]] = []
+    private var pathData: PathsData? = nil
     private var currDay: String = ""
     
     override func viewDidLoad() {
@@ -25,8 +25,8 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
         updateUI()
     }
     
-    func setLocData(data: [[CLLocationCoordinate2D]]) {
-        paths = data
+    func setLocData(data: PathsData) {
+        pathData = data
     }
     
     func setCurrDay(to day: String) {
@@ -45,40 +45,27 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     
     private func updateMap() {
         
+        let paths: [[CLLocationCoordinate2D]] = pathData!.paths
+        
         if paths.isEmpty { /* require at least two points for line */
             let initialLocation = CLLocation(latitude: 44.0081, longitude: -73.1760)
             mapView.centerToLocation(initialLocation)
             return
         }
         
-        var avgLat: Double = 0.0
-        var avgLon: Double = 0.0
-        
-        var minLat: Double = 100000.0
-        var maxLat: Double = -100000.0
-        var minLon: Double = 100000.0
-        var maxLon: Double = -100000.0
-        
-        var numLocations: Int = 0
-        
-        for path in paths { // convert all location records into cllocation coordinates
-            for loc in path {
-                numLocations += 1
-                maxLat = Double.maximum(maxLat, loc.latitude)
-                minLat = Double.minimum(minLat, loc.latitude)
-                
-                maxLon = Double.maximum(maxLon, loc.longitude)
-                minLon = Double.minimum(minLon, loc.longitude)
-                
-                avgLat += loc.latitude
-                avgLon += loc.longitude
-            }
+        // convert all location records into cllocation coordinates
+        for path in paths {
             let geoDesicPolyLine = MKGeodesicPolyline(coordinates: path, count: path.count)
             mapView.addOverlay(geoDesicPolyLine)
         }
         
-        avgLat /= Double(numLocations)
-        avgLon /= Double(numLocations)
+        let avgLat: Double = pathData!.avgLat
+        let avgLon: Double = pathData!.avgLon
+        let maxLon: Double = pathData!.maxLon
+        let minLon: Double = pathData!.minLon
+        let maxLat: Double = pathData!.maxLat
+        let minLat: Double = pathData!.minLat
+        
         let initialLocation = CLLocation(latitude: avgLat, longitude: avgLon)
         
         UIView.animate(withDuration: 1.5, animations: { () -> Void in
@@ -91,8 +78,8 @@ class PathDataViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay)
-            pr.strokeColor = UIColor.blue.withAlphaComponent(0.5)
-            pr.lineWidth = 2
+            pr.strokeColor = UIColor.green
+            pr.lineWidth = 4
             return pr
         }
         return MKOverlayRenderer()

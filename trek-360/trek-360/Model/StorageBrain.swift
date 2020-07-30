@@ -24,6 +24,16 @@ class StorageBrain {
     private var currLon: Double
     private var currPathNum: Int32
     
+    private let DEFAULT_PATHS_DATA: PathsData = PathsData(
+        paths: [],
+        avgLat: 0.0,
+        avgLon: 0.0,
+        maxLat: 0.0,
+        minLat: 0.0,
+        maxLon: 0.0,
+        minLon: 0.0
+    )
+    
     init() {
         /* default loc is midd */
         currLat = 44.0081
@@ -43,6 +53,8 @@ class StorageBrain {
         for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] {
             createTable(tableName: day)
         }
+        
+        currPathNum = getNextPathNum(for: StorageBrain.getWeekDay())
     }
     
     func incrementPathNum() {
@@ -107,7 +119,7 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
     }
     
-    func getRecords(for dayName: String) -> [[CLLocationCoordinate2D]] {
+    func getRecords(for dayName: String) -> PathsData {
         var paths: [[CLLocationCoordinate2D]] = []
         
         /* prepare selection query */
@@ -117,15 +129,27 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
             let err = String(cString: sqlite3_errmsg(db!))
             print("error preparing 'SELECT * FROM \(dayName)' string: \(err)")
-            return paths
+            return DEFAULT_PATHS_DATA
         }
         
         var pathNum: Int32 = 0
+        
+        var avgLat: Double = 0.0
+        var avgLon: Double = 0.0
+        var nPoints: Int = 0
+        var minLat: Double = 100000.0
+        var maxLat: Double = -100000.0
+        var minLon: Double = 100000.0
+        var maxLon: Double = -100000.0
+        
         var currPath: [CLLocationCoordinate2D] = []
         while (sqlite3_step(stmt) == SQLITE_ROW) {
             let lat = sqlite3_column_double(stmt, 1)
-            let long = sqlite3_column_double(stmt, 2)
-            let currRecordPathNum = sqlite3_column_int(stmt, 3)
+            let lon = sqlite3_column_double(stmt, 2)
+            let currRecordPathNum: Int32 = sqlite3_column_int(stmt, 3)
+            
+            avgLat += lat
+            avgLon += lon
             
             if currRecordPathNum != pathNum {
                 if currPath.count > 1 { /* only add paths that have more than one point */
@@ -134,14 +158,35 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
                 pathNum = currRecordPathNum
                 currPath = []
             } else {
-                currPath.append(CLLocationCoordinate2D(latitude: lat, longitude: long))
+                currPath.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
             }
+            
+            nPoints += 1
+            
+            maxLat = Double.maximum(maxLat, lat)
+            minLat = Double.minimum(minLat, lat)
+            
+            maxLon = Double.maximum(maxLon, lon)
+            minLon = Double.minimum(minLon, lon)
         }
         if currPath.count > 1 { // last path needs to be added if valid path
             paths.append(currPath)
         }
         
-        return paths
+        if nPoints > 0 {
+            avgLon /= Double(nPoints)
+            avgLat /= Double(nPoints)
+        }
+        
+        return PathsData(
+            paths: paths,
+            avgLat: avgLat,
+            avgLon: avgLon,
+            maxLat: maxLat,
+            minLat: minLat,
+            maxLon: maxLon,
+            minLon: minLon
+        )
     }
     
     func clear(tableName: String) {
@@ -161,6 +206,24 @@ CREATE TABLE IF NOT EXISTS \(tableName) \
         }
         
         sqlite3_finalize(stmt)
+    }
+    
+    private func getNextPathNum(for tableName: String) -> Int32 {
+        let queryString: String = "SELECT MAX(pathNum) FROM \(tableName)"
+        var stmt: OpaquePointer?
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK {
+            let err = String(cString: sqlite3_errmsg(db!))
+            print("error preparing 'SELECT MAX(pathNum) FROM \(tableName)': \(err)")
+            return 0
+        }
+        
+        if sqlite3_step(stmt) ==  SQLITE_ROW {
+            let lastPathNum: Int32 = sqlite3_column_int(stmt, 0)
+            return lastPathNum + 1
+        }
+        
+        return 0
     }
     
     static func getWeekDay() -> String {
